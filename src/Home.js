@@ -1,17 +1,38 @@
 
-import {useState} from 'react';
+import {useState , useEffect} from 'react';
 import BlogList from './Bloglist';
 const Home = () => {
 
-    const [blogs, setBlogs] = useState([
-        { title: 'My new website', body: 'lorem ipsum...', author: 'Shubhang', id: 1 },
-        { title: 'Welcome party!', body: 'lorem ipsum...', author: 'Sharma', id: 2 },
-        { title: 'Web dev top tips', body: 'lorem ipsum...', author: 'Vergados', id: 3 }
-    ]);
+    const [blogs, setBlogs] = useState(null);
+    const [isPending, setIsPending] = useState(true);
+    const [error , setError] = useState(null);
+
+    useEffect(() => {
+        setTimeout(() => {
+                fetch('http://localhost:8000/blogs')
+            .then(res => {
+                if(!res.ok){
+                    throw Error('Could not load the request you made!');
+                }
+                return res.json();
+            })
+            .then(data => {
+                setBlogs(data);
+                setIsPending(false);
+                setError(null);
+            })
+            .catch(err => {
+                    setError(err.message);
+                    setIsPending(false);
+            });
+        }, 1000);
+    },[]);
 
     return ( 
         <div className="home">
-            <BlogList  blogs = {blogs} title="All Blogs!"/>
+            {error && <div>{error}</div>}
+            {isPending && <div>Loading...</div>}
+            {  blogs && <BlogList  blogs = {blogs} title="All Blogs!" />}
         </div>
      );
 }
