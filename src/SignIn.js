@@ -1,10 +1,41 @@
 import React from 'react';
-import { useState } from 'react-router-dom';
+import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { auth } from './firebase';
 import './SignIn.css';
 
 function SignIn() {
 
-    const [email, setEmail] = useState();
+    const [email, setEmail] = useState("");
+    const [password,setPassword] = useState("");
+    const history = useHistory();
+
+    const signIn = e =>{
+        e.preventDefault();
+
+        auth
+            .signInWithEmailAndPassword(email, password)
+            .then(auth => {
+                history.push('/')
+            })
+            .catch(error => alert(error.message))
+    }
+
+    const register = e =>{
+        e.preventDefault();
+
+        auth
+            .createUserWithEmailAndPassword(email,password)
+            .then(() => {
+                console.log(auth);
+                if(auth){
+                    history.push('/');
+                }
+            })
+            .catch(error => alert(error.message));
+    }
+
     return (
         <div className='signIn'>
             <div className="signIn-container">
@@ -12,14 +43,18 @@ function SignIn() {
 
                 <form>
                     <h5>Email</h5>
-                    <input type='text' />
+                    <input type='text' value={email}
+                        onChange={e => setEmail(e.target.value)}
+                    />
                     <h5>Password</h5>
-                    <input type='password'/>
-                    <button className='signIn-btn'><strong>SignIn</strong></button>
+                    <input type='password'
+                        value={password} onChange={e => setPassword(e.target.value)}
+                    />
+                    <button type="submit" onClick={signIn} className='signIn-btn'><strong>SignIn</strong></button>
 
                     <p>If you don't have an account.Click below and create one!</p>
-
-                    <button className='register-btn'><strong>Create Your Own Personal Blogs</strong></button>
+                    
+                    <button type="submit" onClick={register} className='register-btn'><strong>Create Your Own Personal Blogs</strong></button>
                 </form>
             </div>
             
