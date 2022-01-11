@@ -4,6 +4,7 @@ import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 import Create from './Create';
 import BlogDetails from './BlogDetails';
 import NotFound from './NotFound';
+import SignIn from './SignIn';
 
 
 function App() {
@@ -20,6 +21,9 @@ function App() {
             </Route>
             <Route path="/Create">
               <Create />
+            </Route>
+            <Route path="/SignIn">
+              <SignIn />
             </Route>
             <Route path="/blogs/:id">
               <BlogDetails />
