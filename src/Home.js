@@ -1,19 +1,39 @@
+import { useEffect, useState } from 'react';
+import { db } from './firebase'
 
-import BlogList from './Bloglist';
-import useFetch from './useFetch';
-const Home = () => {
+function Home() {
+    const [blog,setBlog] = useState([]);
+    useEffect(() => {
 
-    const {data:blogs , isPending , error} = useFetch('http://localhost:8000/blogs');
+        db.collection('Blogs').get().then((snapshot) => {
+            snapshot.docs.forEach(doc => {
+                setBlog(blog=>[...blog,doc.data()])
+                
 
+           })
+
+       })
+
+    },[setBlog])
     
+    return (
 
-    return ( 
-        <div className="home">
-            {error && <div>{error}</div>}
-            {isPending && <div>Loading...</div>}
-            {  blogs && <BlogList  blogs = {blogs} title="All Blogs!" />}
+        <div className='home'>
+            <h1>Make Your Own Blogs In New Blog Section</h1>
+            <div id='displayTable'>
+                {blog.map((item,index) => {
+                    return (<div key ={index}><p className='displayUser'>{item.User}</p>
+                                  <p className='displayTitle'>{item.Title}</p>
+                                  <p className='displayBody'>{item.Body}</p>
+                    
+                    </div>
+                            
+                    )
+                })}
+            </div>
+            
         </div>
-     );
+    )
 }
- 
-export default Home;
+
+export default Home

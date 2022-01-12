@@ -11,6 +11,7 @@ function SignIn() {
     const [password,setPassword] = useState("");
     const history = useHistory();
 
+
     const signIn = e =>{
         e.preventDefault();
 
@@ -20,6 +21,7 @@ function SignIn() {
                 history.push('/')
             })
             .catch(error => alert(error.message))
+        
     }
 
     const register = e =>{

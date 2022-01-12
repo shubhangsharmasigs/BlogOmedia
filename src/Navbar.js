@@ -2,7 +2,7 @@ import {Link} from 'react-router-dom';
 import { auth } from './firebase';
 import { useStateValue } from './StateProvider';
 const Navbar = () => {
-    const [{user}, duspatch] = useStateValue();
+    const [{user}, dispatch] = useStateValue();
 
     const handleAuthentication = () => {
         if(user) {
@@ -12,7 +12,7 @@ const Navbar = () => {
 
     return ( 
         <nav className="navbar">
-            <h1>NGs-Blog</h1>
+            <h1>BlogOmedia</h1>
             <div className="links">
                 <Link to="/">Home</Link>
                 <Link to="/Create">New Blog</Link>
