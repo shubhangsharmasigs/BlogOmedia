@@ -107,17 +107,33 @@
   cursor: pointer;
 }
 
-.displayUser{
-  height: fit-content;
-  width:500px;
-  margin-top: 20px;
-  background-color:#d4d4d4;
+/* #displayTable{
+  height:fit-content;
+  padding :10px;
   border:2px solid #374151;
   border-radius: 5px;
 }
+   */
+
+.displayUser{
+  height: fit-content;
+  width:500px;
+  border-bottom: 1px solid lightslategray;
+  border:1px solid #374151;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  padding: 20px;
+  
+}
+.dispUser{
+  display: flex;
+  align-items: center;
+}
 
 .displayTitle{
+  font-weight: bold;
   height:30px;
+  margin-top: 10px;
   width:500px;
 }
 

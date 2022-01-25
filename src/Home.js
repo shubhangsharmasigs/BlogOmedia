@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
-import { db } from './firebase'
+import { db } from './firebase';
+import Avatar from '@material-ui/core/Avatar';
+
 
 function Home() {
     const [blog,setBlog] = useState([]);
@@ -22,14 +24,19 @@ function Home() {
             <h1>Make Your Own Blogs In New Blog Section</h1>
             <div id='displayTable'>
                 {blog.map((item,index) => {
-                    return (<div key ={index}><p className='displayUser'>{item.User}</p>
-                                  <p className='displayTitle'>{item.Title}</p>
-                                  <p className='displayBody'>{item.Body}</p>
+                    return (<div  className='displayUser' key ={index}><p className='dispUser'><Avatar />{item.User}</p>
+                                  
+                                  <div key ={index}> <p className='displayTitle'>{item.Title}</p> </div>
+                                  <div key ={index}><p className='displayBody'>{item.Body}</p></div>
+                    
+                   
                     
                     </div>
+                    
                             
                     )
                 })}
+                 
             </div>
             
         </div>
