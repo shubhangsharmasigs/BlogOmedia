@@ -4,12 +4,14 @@ import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { auth } from './firebase';
 import './SignIn.css';
+import { useStateValue } from './StateProvider';
 
 function SignIn() {
 
     const [email, setEmail] = useState("");
     const [password,setPassword] = useState("");
     const history = useHistory();
+    const [{user}, dispatch] = useStateValue();
 
 
     const signIn = e =>{
@@ -18,6 +20,10 @@ function SignIn() {
         auth
             .signInWithEmailAndPassword(email, password)
             .then(auth => {
+                dispatch({
+                    type:"ADD_USER",
+                     user:auth.user
+                })
                 history.push('/')
             })
             .catch(error => alert(error.message))
@@ -29,7 +35,11 @@ function SignIn() {
 
         auth
             .createUserWithEmailAndPassword(email,password)
-            .then(() => {
+            .then((auth) => {
+                dispatch({
+                    type:"ADD_USER",
+                     user:auth.user
+                })
                 console.log(auth);
                 if(auth){
                     history.push('/');
@@ -37,7 +47,7 @@ function SignIn() {
             })
             .catch(error => alert(error.message));
     }
-
+        console.log(user);
     return (
         <div className='signIn'>
             <div className="signIn-container">

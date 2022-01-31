@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { db } from './firebase';
 import Avatar from '@material-ui/core/Avatar';
+import { useStateValue } from './StateProvider';
 
 
 function Home() {
     const [blog,setBlog] = useState([]);
+    const [{user}, dispatch] = useStateValue();
     useEffect(() => {
 
         
@@ -29,7 +31,8 @@ function Home() {
     return (
 
         <div className='home'>
-            <h1>Make Your Own Blogs In New Blog Section</h1>
+            
+            {user?<h1 className='home-heading'>Make Your Own Blogs In New Blog Section</h1>:<h1 className='home-heading'>SignIn to make new blogs</h1>}
             <div id='displayTable'>
                 {blog.map((item,id) => {
                     console.log(item);

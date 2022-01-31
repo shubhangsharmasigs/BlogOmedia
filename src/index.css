@@ -9,7 +9,7 @@
 .navbar {
   padding: 20px;
   display: flex;
-  align-items: center;
+
   max-width: 600px;
   margin: 0 auto;
   border-bottom: 1px solid #f2f2f2;
@@ -35,7 +35,7 @@
 }
 
 .username{
-  margin-left: 15px;
+  margin-left: 5px;
 }
 
 /* blog previews / list */
@@ -143,3 +143,6 @@
   
 }
 
+.home-heading{
+  margin-bottom: 20px;
+}

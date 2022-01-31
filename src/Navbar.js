@@ -15,7 +15,7 @@ const Navbar = () => {
             <h1>BlogOmedia</h1>
             <div className="links">
                 <Link to="/">Home</Link>
-                <Link to="/Create">New Blog</Link>
+               {user && <Link to="/Create">New Blog</Link>} 
                 <Link onClick ={handleAuthentication} to='/SignIn'>{user? 'SignOut': 'Sign In'}</Link>
              </div>
             <div className="username">Hello {user?.email}</div>
