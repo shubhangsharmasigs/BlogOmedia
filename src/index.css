@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
 
 /* base styles */
 * {
@@ -10,7 +10,7 @@
   padding: 20px;
   display: flex;
 
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
   border-bottom: 1px solid #f2f2f2;
 }
@@ -34,7 +34,7 @@
   padding: 20px;
 }
 
-.username{
+.username {
   margin-left: 5px;
 }
 
@@ -45,7 +45,7 @@
   border-bottom: 1px solid #fafafa;
 }
 .blog-preview:hover {
-  box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.1);
 }
 .blog-preview h2 {
   font-size: 20px;
@@ -53,7 +53,7 @@
   margin-bottom: 8px;
 }
 
-.blog-preview a{
+.blog-preview a {
   text-decoration: none;
 }
 
@@ -90,7 +90,9 @@
   color: #f1356d;
   margin-bottom: 30px;
 }
-.create input, .create textarea, .create select {
+.create input,
+.create textarea,
+.create select {
   width: 100%;
   padding: 6px 10px;
   margin: 10px 0;
@@ -115,34 +117,32 @@
 }
    */
 
-.displayUser{
+.displayUser {
   height: fit-content;
-  width:500px;
+  width: 500px;
   border-bottom: 1px solid lightslategray;
-  border:1px solid #374151;
+  border: 1px solid #374151;
   margin-bottom: 20px;
   border-radius: 20px;
   padding: 20px;
-  
 }
-.dispUser{
+.dispUser {
   display: flex;
   align-items: center;
 }
 
-.displayTitle{
+.displayTitle {
   font-weight: bold;
-  height:30px;
+  height: 30px;
   margin-top: 10px;
-  width:500px;
-}
-
-.displayBody{
-  height:fit-content;
   width: 500px;
-  
 }
 
-.home-heading{
+.displayBody {
+  height: fit-content;
+  width: 500px;
+}
+
+.home-heading {
   margin-bottom: 20px;
 }
